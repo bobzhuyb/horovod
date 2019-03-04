@@ -2143,7 +2143,7 @@ bool RunLoopOnce(HorovodGlobalState& state, bool is_coordinator) {
     for (auto& tensor_name : ready_to_reduce) {
       Response response =
           ConstructResponse(state.message_table, tensor_name);
-      responses.push_back(std::move(response));
+      responses.push_front(std::move(response));
     }
 
     ResponseList response_list;
